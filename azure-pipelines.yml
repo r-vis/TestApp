@@ -13,6 +13,10 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  MajorVersion: 1
+  MinorVersion: 0
+  InitialReleaseTagNumber: 1
+  IncrementReleaseTagNumber: $[counter(variables['InitialReleaseTagNumber'], 0)]
 
 steps:
 - task: NuGetToolInstaller@1
@@ -51,5 +55,7 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
+    tagPattern: 'MajorVersion: 1   MinorVersion: 0   InitialReleaseTagNumber: 1   IncrementReleaseTagNumber: $[counter(variables[''InitialReleaseTagNumber''], 0)]'
+    title: 'Portable'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
