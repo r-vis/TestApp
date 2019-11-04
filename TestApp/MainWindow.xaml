@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp"
+        xmlns:tcl="clr-namespace:TestClassLibrary;assembly=TestClassLibrary"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+  <Window.Resources>
+    <tcl:MyClass x:Key="myClass"/>
+  </Window.Resources>
+  <Grid>
+
+    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Source={StaticResource myClass}, Path=Message}"/>
+
+  </Grid>
 </Window>
