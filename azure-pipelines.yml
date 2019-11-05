@@ -73,7 +73,7 @@ steps:
     tagSource: 'userSpecifiedTag'
     tag: 'v$(AppVer)'
     title: 'RVis v$(AppVer)'
-    releaseNotesSource: 'inline'
+    releaseNotesFilePath: 'release_notes.md'
     assets: |
       $(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip
       $(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer)_x64.zip
