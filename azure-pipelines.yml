@@ -47,7 +47,7 @@ steps:
 - task: BatchScript@1
   inputs:
     filename: 'prepare_portable.bat'
-    arguments: '$AppVer'
+    arguments: '$(AppVer)'
 
 - task: ArchiveFiles@2
   inputs:
