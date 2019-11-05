@@ -57,6 +57,14 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip'
     replaceExistingArchive: true
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: 'TestApp_v$(AppVer)_x64'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer)_x64.zip'
+    replaceExistingArchive: true
+
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'TestAppRelease'
@@ -66,5 +74,8 @@ steps:
     tagSource: 'userSpecifiedTag'
     tag: 'v$(AppVer)'
     title: 'RVis v$(AppVer)'
-    assets: '$(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip'
+    releaseNotesSource: 'inline'
+    assets: |
+      $(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip
+      $(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer)_x64.zip
     addChangeLog: false
