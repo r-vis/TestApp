@@ -28,6 +28,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    msbuildArgs: '/p:DefineConstants="AZURE_PIPELINE_BUILD"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
