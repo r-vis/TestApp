@@ -16,9 +16,11 @@
 @mkdir %dirName%
 @mkdir %dirName%\bin
 
-@copy TestApp\bin\Release\TestApp.exe %dirName%\ >nul
-@copy TestApp\bin\Release\TestApp.exe.config %dirName%\ >nul
-@copy TestApp\bin\Release\*.dll %dirName%\bin\ >nul
+@set release="TestApp\bin\Release"
+
+@copy %release%\TestApp.exe %dirName%\ >nul
+@copy %release%\TestApp.exe.config %dirName%\ >nul
+@copy %release%\*.dll %dirName%\bin\ >nul
 
 @copy TestClassLibrary\bin\Release\TestClassLibrary.dll %dirName%\bin\ >nul
 
@@ -39,9 +41,11 @@
 @mkdir %dirNamex64%
 @mkdir %dirNamex64%\bin
 
-@copy TestApp\bin\x64\Release\TestApp.exe %dirNamex64%\ >nul
-@copy TestApp\bin\x64\Release\TestApp.exe.config %dirNamex64%\ >nul
-@copy TestApp\bin\x64\Release\*.dll %dirNamex64%\bin\ >nul
+@set release="TestApp\bin\x64\Release"
+
+@copy %release%\TestApp.exe %dirNamex64%\ >nul
+@copy %release%\TestApp.exe.config %dirNamex64%\ >nul
+@copy %release%\*.dll %dirNamex64%\bin\ >nul
 
 @copy TestClassLibrary\bin\x64\Release\TestClassLibrary.dll %dirNamex64%\bin\ >nul
 
