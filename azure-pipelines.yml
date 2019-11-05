@@ -13,10 +13,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  MajorVersion: 1
-  MinorVersion: 0
-  InitialReleaseTagNumber: 1
-  IncrementReleaseTagNumber: $[counter(variables['InitialReleaseTagNumber'], 0)]
 
 steps:
 - task: NuGetToolInstaller@1
@@ -37,16 +33,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: PowerShell@2
+  inputs:
+    filePath: 'SetAppVerVariables.ps1'
+
 - task: BatchScript@1
   inputs:
-    filename: 'prepare_release.bat'
+    filename: 'prepare_portable.bat'
+    arguments: '$AppVer'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'testapp_x86'
+    rootFolderOrFile: 'TestApp_v$(AppVer)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/TestApp_x86v$(MajorVersion).$(MinorVersion).$(IncrementReleaseTagNumber).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip'
     replaceExistingArchive: true
 
 - task: GitHubRelease@1
@@ -56,5 +57,7 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
-    tag: 'v$(MajorVersion).$(MinorVersion).$(IncrementReleaseTagNumber)'
+    tag: 'v$(AppVer)'
+    title: 'RVis v$(AppVer)'
+    assets: '$(Build.ArtifactStagingDirectory)/TestApp_v$(AppVer).zip'
     addChangeLog: false
