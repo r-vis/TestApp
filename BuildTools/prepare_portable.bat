@@ -9,6 +9,8 @@
 
 @set dirName="TestApp_%suffix%"
 
+cd ..
+
 @if exist %dirName% (
   @rmdir /Q /S %dirName%
 )

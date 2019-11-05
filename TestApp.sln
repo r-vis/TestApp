@@ -9,9 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClassLibrary", "TestCla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.TestApp", "Test.TestApp\Test.TestApp.csproj", "{65ADD475-96EC-4282-A0B4-A8F4650D9FDC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89084BF3-D268-4570-A3F7-850A94A85A20}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ABF29E57-D239-4A98-9733-366A1EF15FD7}"
 	ProjectSection(SolutionItems) = preProject
-		prepare_release.bat = prepare_release.bat
+		BuildTools\prepare_portable.bat = BuildTools\prepare_portable.bat
+		BuildTools\SetAppVerVariables.ps1 = BuildTools\SetAppVerVariables.ps1
 	EndProjectSection
 EndProject
 Global
