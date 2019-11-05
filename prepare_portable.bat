@@ -1,15 +1,13 @@
 @setlocal enabledelayedexpansion
 
-@set suffix=%1
+@set version=%1
 
-@if "%suffix%" == "" (
-  @echo Suffix needed^^!
+@if "%version%" == "" (
+  @echo Version needed^^!
   @exit /b 1
 )
 
-@set dirName="TestApp_%suffix%"
-
-cd ..
+@set dirName="TestApp_v%version%"
 
 @if exist %dirName% (
   @rmdir /Q /S %dirName%
@@ -24,7 +22,7 @@ cd ..
 
 @copy TestClassLibrary\bin\Release\TestClassLibrary.dll %dirName%\bin\
 
-@set dirNamex64="TestApp_%suffix%_x64"
+@set dirNamex64="TestApp_v%version%_x64"
 
 @if exist %dirNamex64% (
   @rmdir /Q /S %dirNamex64%
