@@ -11,5 +11,13 @@ namespace Test.TestApp
     {
       Assert.AreEqual("Hello!", new TestClassLibrary.MyClass().Message);
     }
+
+#if !AZURE_PIPELINE_BUILD
+    [TestMethod]
+    public void TestWillAlwaysFail()
+    {
+      Assert.AreEqual("Hello, World!", new TestClassLibrary.MyClass().Message);
+    }
+#endif
   }
 }
