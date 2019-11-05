@@ -28,6 +28,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DefineConstants="AZURE_PIPELINE_BUILD"'
+    platform: 'x64'
+    configuration: '$(buildConfiguration)'
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
